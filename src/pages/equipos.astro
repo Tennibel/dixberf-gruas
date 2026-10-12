@@ -1,0 +1,16 @@
+---
+import {withBase} from '../utils/paths';
+import Base from '../layouts/Base.astro';
+import InteriorHero from '../components/InteriorHero.astro';
+import Photo from '../components/Photo.astro';
+import CTA from '../components/CTA.astro';
+import {equipment} from '../data/site';
+---
+<Base industrial title="Nuestra flota de grúas y transporte | DIXBERF" description="Conoce la flota DIXBERF: grúas Grove, HIAB, camión grúa Simon, montacargas Hyster y tractocamiones Freightliner. Te ayudamos a elegir tu equipo.">
+ <InteriorHero title="Nuestra" accent="flota." eyebrow="EQUIPOS PROPIOS · PERSONAL ESPECIALIZADO" breadcrumb="Equipos" description="Equipos propios, operados por personal especializado. ¿No sabes cuál necesitas? Envíanos los datos de tu maniobra y te lo recomendamos." cutout caption="GROVE / GRÚA TELESCÓPICA" target="#flota" scrollLabel="CONOCE LOS EQUIPOS" primary="Encontrar mi equipo" secondary="Asesoría por WhatsApp"/>
+ <section class="section fleet-section" id="flota">
+  <div class="wrap section-head" data-reveal><div><p class="eyebrow">CAPACIDAD PARA CADA RETO</p><h2>El equipo correcto.<br/>En el lugar indicado.</h2></div><p>Izaje, movimiento y transporte.<br/>Seleccionamos cada equipo según tu maniobra.</p></div>
+  <div class="wrap equipment-grid">{equipment.map((e,i)=><article class="equipment-card fleet-card" data-reveal><div class="fleet-photo" data-parallax-photo><Photo name={e.image} alt={`${e.type} ${e.name} de la flota DIXBERF`} sizes="(max-width: 600px) 100vw, (max-width: 850px) 50vw, 33vw"/><span class="fleet-number" aria-hidden="true">{String(i+1).padStart(2,'0')} / DIXBERF</span></div><div class="fleet-copy"><p class="eyebrow">{e.type}</p><h2>{e.name}</h2><strong>{e.spec}</strong><p>{e.description}</p><a class="text-link" href={withBase(`/${e.slug}/`)}>Ver aplicaciones <span aria-hidden="true">↗</span></a></div></article>)}</div>
+  <div class="wrap"><p class="fleet-note" data-reveal>Las capacidades de trabajo dependen del radio, la configuración del equipo y las condiciones del sitio. La selección se realiza al evaluar cada maniobra.</p></div>
+ </section><CTA/>
+</Base>

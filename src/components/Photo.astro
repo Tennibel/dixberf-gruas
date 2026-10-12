@@ -1,0 +1,8 @@
+---
+import {withBase} from '../utils/paths';
+import images from '../data/images.json';
+interface Props {name:string;alt:string;class?:string;eager?:boolean;sizes?:string;}
+const {name,alt,class:className='',eager=false,sizes='(max-width: 700px) 100vw, 50vw'}=Astro.props;
+const info=images[name as keyof typeof images];
+---
+<img class={className} src={withBase(`/images/${name}-960.webp`)} srcset={[480,768,960,1600,...(name==='hero'?[2200]:[])].map(w=>`${withBase(`/images/${name}-${w}.webp`)} ${Math.min(w,info.width)}w`).filter((v,i,a)=>a.findIndex(x=>x.split(' ').at(-1)===v.split(' ').at(-1))===i).join(', ')} sizes={sizes} width={info.width} height={info.height} alt={alt} loading={eager?'eager':'lazy'} fetchpriority={eager?'high':'auto'} decoding="async"/>

@@ -1,0 +1,26 @@
+---
+import {withBase} from '../utils/paths';
+const enabled=import.meta.env.PUBLIC_FORM_ENABLED==='true' && !!import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+---
+<form id="quote-form" class="quote-form" data-enabled={enabled} data-whatsapp="525525194278">
+ <div class="form-heading"><span class="eyebrow">HABLEMOS DE TU PROYECTO</span><h2>Cuéntanos tu maniobra.</h2><p>{enabled?'Completa tus datos para recibir una propuesta.':'Completa los datos y envíanos tu solicitud por WhatsApp.'}</p></div>
+ <p class="form-note" style="margin:0 0 15px">Los campos con * son obligatorios.</p>
+ <div class="form-grid">
+ <label><span class="field-label">Nombre <span>*</span></span><input name="name" autocomplete="name" required maxlength="100" placeholder="Tu nombre"/></label>
+ <label><span class="field-label">Teléfono o WhatsApp <span>*</span></span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" required pattern="[+0-9 ()-]{10,20}" maxlength="20" placeholder="10 dígitos"/></label>
+ <label><span class="field-label">Empresa <small>(opcional)</small></span><input name="company" autocomplete="organization" maxlength="150" placeholder="Nombre de tu empresa"/></label>
+ <label><span class="field-label">Tipo de servicio <span>*</span></span><select name="service" required><option value="">Selecciona un servicio</option><option>Grúas industriales</option><option>Grúas telescópicas</option><option>Grúa HIAB</option><option>Maniobras industriales</option><option>Transporte de maquinaria pesada</option><option>Montacargas</option><option>Necesito asesoría</option></select></label>
+ <label class="span-2"><span class="field-label">¿Qué necesitas mover? <span>*</span></span><textarea name="message" required minlength="10" maxlength="2000" rows="3" placeholder="Cuéntanos sobre la carga, altura y accesos del lugar."></textarea></label>
+ <label><span class="field-label">Ubicación de la maniobra <span>*</span></span><input name="location" required maxlength="200" placeholder="Municipio y estado"/></label>
+ <label><span class="field-label">Fecha tentativa <span>*</span></span><input name="date" type="date" required/></label>
+ <label class="span-2"><span class="field-label">Peso aproximado <small>(opcional)</small></span><input name="weight" maxlength="80" placeholder="Ej. 5 toneladas, o aún no lo sé"/></label>
+ </div>
+ <div class="honeypot" aria-hidden="true"><label><span class="field-label">No llenar este campo</span><input name="website" tabindex="-1" autocomplete="off"/></label></div>
+ <label class="consent-check"><input name="privacy" type="checkbox" required/><span>He leído y acepto la <a href={withBase('/politica-de-privacidad/')}>política de privacidad</a> para atender mi solicitud.</span></label>
+ {enabled && <div class="cf-turnstile" data-sitekey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY} data-action="quote" data-theme="light"></div>}
+ <button type="submit" class="button dark">{enabled?'Enviar solicitud':'Enviar por WhatsApp'} <span aria-hidden="true">↗</span></button>
+ <p class="form-note">{enabled?'Usaremos tus datos para revisar y cotizar tu maniobra.':'Se abrirá WhatsApp con tu mensaje. Revísalo y pulsa enviar para hacérnoslo llegar.'}</p>
+ <p id="form-status" role="status" aria-live="polite" tabindex="-1"></p>
+ <noscript><p>Para cotizar sin JavaScript, llámanos al <a href="tel:+527224747458">722 474 7458</a> o escribe a <a href="mailto:cotizaciones@dixberfgruas.com.mx">cotizaciones@dixberfgruas.com.mx</a>.</p></noscript>
+</form>
+{enabled && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}

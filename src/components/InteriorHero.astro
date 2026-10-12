@@ -1,0 +1,27 @@
+---
+import {withBase} from '../utils/paths';
+import Photo from './Photo.astro';
+import {whatsapp} from '../data/site';
+interface Props {
+ title:string; accent?:string; description:string; eyebrow:string; breadcrumb:string;
+ image?:string; alt?:string; cutout?:boolean; caption:string;
+ target:string; scrollLabel:string; primary?:string; secondary?:string; message?:string;
+}
+const {title,accent,description,eyebrow,breadcrumb,image,alt='',cutout=false,caption,target,scrollLabel,primary='Cotizar mi maniobra',secondary='Consultar disponibilidad',message}=Astro.props;
+---
+<section class="interior-hero" data-motion-hero aria-labelledby="interior-title">
+ <div class="hero-blueprint" aria-hidden="true"><div class="blueprint-grid"></div><div class="blueprint-orbit orbit-one"></div><div class="blueprint-orbit orbit-two"></div><div class="blueprint-word">DIXBERF</div></div>
+ <div class="wrap">
+  <div class="breadcrumbs"><a href={withBase('/')}>Inicio</a><span aria-hidden="true">/</span><span>{breadcrumb}</span></div>
+  <div class="interior-hero-grid">
+   <div class="interior-copy">
+    <p class="eyebrow hero-intro">{eyebrow}</p>
+    <h1 id="interior-title"><span class="hero-line">{title}</span>{accent&&<span class="hero-line interior-accent">{accent}</span>}</h1>
+    <p class="engineered-description">{description}</p>
+    <div class="engineered-actions"><a href={withBase('/contacto/')} class="button">{primary} <span aria-hidden="true">↗</span></a><a href={whatsapp(message)} class="hero-whatsapp" data-event="whatsapp_click">{secondary} <span aria-hidden="true">↗</span></a></div>
+   </div>
+   {cutout?<div class="hero-machine-stage interior-machine"><div class="machine-orbit" aria-hidden="true"><span>+</span><span>+</span></div><div class="hero-machine" data-hero-machine><img src={withBase('/images/grua-hero-1200.webp')} srcset={`${withBase("/images/grua-hero-640.webp")} 640w, ${withBase("/images/grua-hero-1200.webp")} 1200w`} sizes="(max-width: 600px) 100vw, 55vw" width="1200" height="900" alt="Grúa telescópica Grove de la flota DIXBERF" fetchpriority="high" loading="eager" decoding="async"/></div><span class="interior-machine-label">{caption}</span></div>:<figure class="interior-visual"><div class="interior-photo" data-parallax-photo><Photo name={image!} alt={alt} eager sizes="(max-width: 600px) 100vw, 50vw"/></div><figcaption><span class="status-dot" aria-hidden="true"></span>{caption}<span aria-hidden="true">↗</span></figcaption><span class="photo-crosshair" aria-hidden="true">+</span></figure>}
+  </div>
+  <div class="interior-bottom"><a class="scroll-cue" href={target}><span class="scroll-cue-icon" aria-hidden="true">↓</span>{scrollLabel}</a><span class="interior-signature">PRECISIÓN EN CADA MOVIMIENTO</span><button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false" hidden><span aria-hidden="true">Ⅱ</span><span data-motion-label>Pausar efectos</span></button></div>
+ </div>
+</section>

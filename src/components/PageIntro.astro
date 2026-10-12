@@ -1,0 +1,5 @@
+---
+import {withBase} from '../utils/paths';
+const {title,description,eyebrow='DIXBERF / GRÚAS · MANIOBRAS · TRANSPORTE'}=Astro.props;
+---
+<section class="page-hero"><div class="wrap"><div class="breadcrumbs"><a href={withBase('/')}>Inicio</a><span>/</span><span>{title}</span></div><p class="eyebrow">{eyebrow}</p><h1>{title}</h1><p class="intro">{description}</p></div></section>

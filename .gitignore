@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+.work/
+.DS_Store
+
+# Client originals and local review artifacts; optimized web assets are in public/.
+Fotos*/
+*.docx
+PLAN_*.md
+src/assets/grua-hero-source.png
+docs/*.png

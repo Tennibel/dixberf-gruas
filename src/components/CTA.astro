@@ -1,0 +1,5 @@
+---
+import {withBase} from '../utils/paths';
+import {site,whatsapp} from '../data/site';
+---
+<section class="cta-band"><div class="wrap cta-inner"><div data-reveal><p class="eyebrow">TU PRÓXIMO PROYECTO EMPIEZA AQUÍ</p><h2>¿Tienes una maniobra<br/>en puerta?</h2><p>Cuéntanos qué necesitas mover y dónde. Nosotros planeamos el siguiente paso.</p></div><div class="cta-actions" data-reveal><a href={withBase('/contacto/')} class="button dark">Cotizar mi maniobra <span aria-hidden="true">↗</span></a><a href={whatsapp()} class="text-link" data-event="whatsapp_click">Revisemos tu proyecto por WhatsApp ↗</a><a href={site.phoneHref} class="text-link" data-event="phone_click">Llamar al {site.phone} ↗</a></div></div></section>

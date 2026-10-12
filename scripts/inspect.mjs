@@ -1,0 +1,2 @@
+import {chromium} from '@playwright/test';
+const b=await chromium.launch({channel:'chrome',headless:true});const p=await b.newPage({viewport:{width:320,height:568},reducedMotion:'reduce'});await p.goto('http://localhost:4321');console.log(await p.evaluate(()=>[...document.querySelectorAll('body *')].filter(e=>e.getBoundingClientRect().right>innerWidth+1).map(e=>({tag:e.tagName,cl:e.className,text:e.textContent?.slice(0,80),right:e.getBoundingClientRect().right,css:getComputedStyle(e).display})).slice(0,30)));await b.close();

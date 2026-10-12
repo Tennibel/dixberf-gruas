@@ -1,0 +1,26 @@
+import {withBase} from '../utils/paths';
+type Consent = 'granted'|'denied';
+declare global {interface Window {dataLayer:unknown[];gtag?:(...args:unknown[])=>void;turnstile?:{reset:()=>void};}}
+const menu=document.querySelector<HTMLButtonElement>('.menu-toggle');
+const nav=document.querySelector<HTMLElement>('#navigation');
+function closeMenu(){menu?.setAttribute('aria-expanded','false');nav?.classList.remove('is-open');}
+menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');nav?.classList.toggle('is-open',open);});
+nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu?.getAttribute('aria-expanded')==='true'){closeMenu();menu.focus();}});
+const banner=document.querySelector<HTMLElement>('#cookie-banner');
+const gaId=document.querySelector<HTMLMetaElement>('meta[name="ga-id"]')?.content||'';
+let consent:Consent|undefined;
+try {const saved=JSON.parse(localStorage.getItem('dixberf-consent')||'null');if(saved&&Date.now()-saved.time<180*86400000&&['granted','denied'].includes(saved.value))consent=saved.value;}catch{/* Storage may be unavailable. */}
+let loaded=false;
+function startAnalytics(){if(loaded||!/^G-[A-Z0-9]+$/.test(gaId)||consent!=='granted')return;loaded=true;window.dataLayer=window.dataLayer||[];window.gtag=function(){window.dataLayer.push(arguments);};window.gtag('consent','default',{analytics_storage:'granted',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});window.gtag('js',new Date());window.gtag('config',gaId,{send_page_view:true,page_location:location.origin+location.pathname,page_referrer:document.referrer?new URL(document.referrer).origin:'',allow_google_signals:false,allow_ad_personalization_signals:false});const script=document.createElement('script');script.src=`https://www.googletagmanager.com/gtag/js?id=${gaId}`;script.async=true;document.head.append(script);}
+function track(name:string){if(consent==='granted')window.gtag?.('event',name,{page_path:location.pathname});}
+if(!consent&&banner)banner.hidden=false;startAnalytics();
+document.querySelectorAll<HTMLButtonElement>('[data-consent]').forEach(button=>button.addEventListener('click',()=>{consent=button.dataset.consent as Consent;try{localStorage.setItem('dixberf-consent',JSON.stringify({value:consent,time:Date.now()}));}catch{/* Keep in-memory choice. */}if(banner)banner.hidden=true;if(consent==='denied'){window.gtag?.('consent','update',{analytics_storage:'denied'});for(const cookie of document.cookie.split(';')){const name=cookie.split('=')[0].trim();if(name.startsWith('_ga')){for(const domain of [location.hostname,'.'+location.hostname])document.cookie=`${name}=; Max-Age=0; path=/; domain=${domain}`;document.cookie=`${name}=; Max-Age=0; path=/`;}}if(loaded)location.reload();}else startAnalytics();document.querySelector<HTMLButtonElement>('#cookie-settings')?.focus({preventScroll:true});}));
+document.querySelector('#cookie-settings')?.addEventListener('click',()=>{if(banner){banner.hidden=false;banner.querySelector('button')?.focus();}});
+document.querySelectorAll<HTMLElement>('[data-event]').forEach(a=>a.addEventListener('click',()=>track(a.dataset.event||'contact_click')));
+const form=document.querySelector<HTMLFormElement>('#quote-form');
+form?.addEventListener('focusin',()=>track('form_start'),{once:true});
+const date=form?.querySelector<HTMLInputElement>('[name="date"]');if(date){const today=new Date();date.min=`${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;}
+form?.addEventListener('submit',async event=>{event.preventDefault();if(!form.reportValidity())return;const data=new FormData(form);if(data.get('website'))return;const status=document.querySelector<HTMLElement>('#form-status')!;const button=form.querySelector<HTMLButtonElement>('[type="submit"]')!;if(form.dataset.enabled!=='true'){const message=`Hola DIXBERF, quiero cotizar una maniobra.\nNombre: ${data.get('name')}\nTeléfono: ${data.get('phone')}\nEmpresa: ${data.get('company')||'No indicada'}\nServicio: ${data.get('service')}\nCarga: ${data.get('message')}\nUbicación: ${data.get('location')}\nFecha: ${data.get('date')}\nPeso: ${data.get('weight')||'Por definir'}`;track('whatsapp_click');location.href=`https://wa.me/${form.dataset.whatsapp}?text=${encodeURIComponent(message)}`;return;}button.disabled=true;status.textContent='Enviando tu solicitud…';try{const response=await fetch(withBase('/api/quote'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...Object.fromEntries(data),page:location.pathname}),signal:AbortSignal.timeout(20000)});if(!response.ok)throw new Error('send');status.textContent='Gracias, recibimos tu solicitud. Te contactaremos por teléfono o WhatsApp. Si es urgente, llámanos al 722 474 7458.';track('quote_submit');form.reset();}catch{status.textContent='No pudimos enviar tu solicitud. Conservamos tus datos en el formulario para que lo intentes de nuevo. También puedes llamarnos al 722 474 7458 o usar el botón de WhatsApp.';track('form_error');}finally{button.disabled=false;window.turnstile?.reset();status.focus();}});
+import './motion';
+export {};

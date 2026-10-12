@@ -1,0 +1,14 @@
+# Apache: requiere mod_rewrite y un certificado TLS instalado.
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://dixberfgruas.com.mx%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.dixberfgruas\.com\.mx$ [NC]
+RewriteRule ^ https://dixberfgruas.com.mx%{REQUEST_URI} [R=301,L]
+Redirect 301 /aviso-de-privacidad/ /politica-de-privacidad/
+ErrorDocument 404 /404.html
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set X-Frame-Options "DENY"
+Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>

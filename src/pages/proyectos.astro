@@ -1,0 +1,16 @@
+---
+import {withBase} from '../utils/paths';
+import Base from '../layouts/Base.astro';
+import InteriorHero from '../components/InteriorHero.astro';
+import Photo from '../components/Photo.astro';
+import CTA from '../components/CTA.astro';
+import {projects} from '../data/site';
+---
+<Base industrial title="Trabajos realizados y maniobras industriales | DIXBERF" description="Fotografías reales de trabajos DIXBERF: montaje de estructuras, maniobras industriales, movimiento de maquinaria y transporte de carga pesada.">
+ <InteriorHero title="Experiencia real" accent="en campo." eyebrow="PROYECTOS DIXBERF" breadcrumb="Proyectos" description="Algunos de los trabajos que hemos ejecutado. Equipos, personas y planeación detrás de cada movimiento." image="puente" alt="Equipo DIXBERF realizando el montaje de prefabricados en obra" caption="IZAJE Y MONTAJE / EN CAMPO" target="#proyectos" scrollLabel="EXPLORAR PROYECTOS" primary="Planeemos tu proyecto" secondary="Hablemos de tu maniobra"/>
+ <section class="section projects-section portfolio-section" id="proyectos">
+  <div class="wrap section-head" data-reveal><div><p class="eyebrow light">DEL PLAN A LA EJECUCIÓN</p><h2>Cada movimiento<br/>cuenta una historia.</h2></div><p>Fotografías de nuestros trabajos.<br/>La experiencia se demuestra en campo.</p></div>
+  <div class="wrap portfolio-grid">{projects.map((p,i)=><article class="portfolio-card" data-reveal><div class="portfolio-photo" data-parallax-photo><Photo name={p.image} alt={p.title+' con equipo DIXBERF'} sizes="(max-width: 600px) 100vw, 50vw"/><span class="portfolio-number" aria-hidden="true">{String(i+1).padStart(2,'0')}</span></div><div class="portfolio-caption"><div><p class="eyebrow light">{p.tag}</p><h2>{p.title}</h2></div><span class="portfolio-mark" aria-hidden="true">+</span></div></article>)}</div>
+ </section>
+ <section class="section"><div class="wrap content-grid"><div data-reveal><p class="eyebrow">APLICACIONES</p><h2>Experiencia para<br/>diferentes retos.</h2><a class="text-link" href={withBase('/contacto/')}>Cuéntanos tu siguiente reto ↗</a></div><ul class="solution-list" data-stagger>{['Montaje de tubería de concreto para embovedamiento de ríos.','Instalación de pasarelas y escaleras industriales.','Movimiento de contenedores.','Movimiento y reacomodo de maquinaria pesada.','Montaje y desmontaje de grúas torre.','Izaje y posicionamiento de equipos HVAC.','Instalación y posicionamiento de tanques y silos.','Colocación de anuncios y pantallas gigantes.','Montaje de prefabricados y naves industriales.'].map((p,i)=><li data-reveal><span>{String(i+1).padStart(2,'0')}</span>{p}</li>)}</ul></div></section><CTA/>
+</Base>

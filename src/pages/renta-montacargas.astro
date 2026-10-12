@@ -1,0 +1,10 @@
+---
+import {withBase} from '../utils/paths';
+import Base from '../layouts/Base.astro';
+import InteriorHero from '../components/InteriorHero.astro';
+import CTA from '../components/CTA.astro';
+---
+<Base industrial title="Montacargas Hyster de 5 toneladas | DIXBERF" description="Montacargas Hyster de 5 toneladas para interiores y exteriores. Movimiento y reubicación de maquinaria con DIXBERF desde Toluca. Cotiza tu proyecto.">
+ <InteriorHero title="La precisión también se mueve" accent="a nivel de piso." eyebrow="MONTACARGAS HYSTER" breadcrumb="Montacargas" description="Montacargas de 5 toneladas para interiores y exteriores con terreno irregular. Una solución para cargar, descargar y reubicar maquinaria." image="montacargas" alt="Montacargas Hyster amarillo trasladando equipo industrial en un patio" caption="HYSTER / 5 TONELADAS" target="#aplicaciones" scrollLabel="EXPLORAR APLICACIONES" primary="Cotizar montacargas"/>
+ <section class="section interior-solutions" id="aplicaciones"><div class="wrap content-grid"><div data-reveal><p class="eyebrow">EQUIPO PARA TU OPERACIÓN</p><h2>5 toneladas.<br/>Múltiples aplicaciones.</h2><a href={withBase('/contacto/')} class="text-link">Cotizar montacargas ↗</a></div><ul class="solution-list" data-stagger>{['Carga y descarga de maquinaria.','Posicionamiento en interiores y exteriores.','Movimiento y reubicación de equipos.','Gas o combustible: sin paros por carga de baterías.'].map((text,i)=><li data-reveal><span>{String(i+1).padStart(2,'0')}</span>{text}</li>)}</ul></div></section><CTA/>
+</Base>

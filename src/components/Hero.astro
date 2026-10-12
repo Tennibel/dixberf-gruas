@@ -1,0 +1,22 @@
+---
+import {withBase} from '../utils/paths';
+import {whatsapp} from '../data/site';
+---
+<section class="hero hero-engineered" aria-labelledby="hero-title" data-motion-hero>
+ <div class="hero-blueprint" aria-hidden="true"><div class="blueprint-grid"></div><div class="blueprint-orbit orbit-one"></div><div class="blueprint-orbit orbit-two"></div><span class="blueprint-word">DIXBERF</span></div>
+ <div class="wrap engineered-grid">
+  <div class="engineered-copy">
+   <p class="eyebrow hero-intro"><span class="yellow-line"></span> GRÚAS · MANIOBRAS · TRANSPORTE</p>
+   <h1 id="hero-title"><span class="hero-line">Elevando</span> <span class="hero-line">tus proyectos.</span> <span class="hero-line hero-accent">Asegurando</span> <span class="hero-line hero-accent">tu éxito.</span></h1>
+   <p class="engineered-description">Grúas industriales y transporte especializado.<br/>Desde Toluca, movemos lo que impulsa a tu empresa con seguridad y precisión.</p>
+   <div class="engineered-actions"><a href={withBase('/contacto/')} class="button">Cotizar mi maniobra <span aria-hidden="true">↗</span></a><a href={whatsapp()} class="hero-whatsapp" data-event="whatsapp_click">Hablemos por WhatsApp <span aria-hidden="true">↗</span></a></div>
+  </div>
+  <div class="hero-machine-stage">
+   <div class="machine-orbit" aria-hidden="true"><span>+</span><span>+</span></div>
+   <div class="hero-machine" data-hero-machine><img src={withBase('/images/grua-hero-1200.webp')} srcset={`${withBase("/images/grua-hero-640.webp")} 640w, ${withBase("/images/grua-hero-1200.webp")} 1200w`} sizes="(max-width: 700px) 100vw, 58vw" width="1200" height="900" alt="Grúa telescópica DIXBERF con la pluma elevada y estabilizadores desplegados" fetchpriority="high" loading="eager" decoding="async"/></div>
+   <div class="machine-label"><span class="status-dot"></span><span>FLOTA PROPIA<br/><strong>Fuerza bajo control.</strong></span><span class="label-line" aria-hidden="true"></span></div>
+   <div class="machine-spec"><span class="eyebrow">LISTOS PARA TU PROYECTO</span><strong>24<span>/</span>7</strong><span>Los 365 días del año.</span></div>
+  </div>
+ </div>
+ <div class="wrap engineered-bottom"><a href="#servicios" class="scroll-cue"><span class="scroll-cue-icon" aria-hidden="true">↓</span><span>EXPLORA LO QUE PODEMOS MOVER</span></a><span class="hero-location"><i class="status-dot"></i> TOLUCA, MÉXICO <span aria-hidden="true">→</span> COBERTURA NACIONAL</span><button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false" hidden><span aria-hidden="true">Ⅱ</span> <span data-motion-label>Pausar efectos</span></button></div>
+</section>

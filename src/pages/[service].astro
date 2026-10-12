@@ -1,0 +1,17 @@
+---
+import {withBase} from '../utils/paths';
+import Base from '../layouts/Base.astro';
+import InteriorHero from '../components/InteriorHero.astro';
+import CTA from '../components/CTA.astro';
+import services from '../data/services.json';
+import {site} from '../data/site';
+export function getStaticPaths(){return services.map(service=>({params:{service:service.slug},props:{service}}));}
+const {service}=Astro.props;
+const schema={'@context':'https://schema.org','@graph':[{'@type':'Service',name:service.title,description:service.description,provider:{'@id':site.url+'/#business'},areaServed:{'@type':'Country',name:'México'},url:site.url+'/'+service.slug+'/'},{'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Inicio',item:site.url+'/'},{'@type':'ListItem',position:2,name:service.title,item:site.url+'/'+service.slug+'/'}]},{'@type':'FAQPage',mainEntity:service.faq.map(f=>({'@type':'Question',name:f.q,acceptedAnswer:{'@type':'Answer',text:f.a}}))}]};
+---
+<Base industrial title={`${service.title} | DIXBERF`} description={service.description.slice(0,155)} schema={schema}>
+<InteriorHero title={service.title} description={service.description} eyebrow="EL EQUIPO CORRECTO PARA TU PROYECTO" breadcrumb={service.label} image={service.image} alt={`${service.label}: equipo DIXBERF durante una maniobra industrial`} caption={service.label} target="#soluciones" scrollLabel="EXPLORAR APLICACIONES" message={`Hola, me interesa ${service.label.toLowerCase()}. Quisiera cotizar una maniobra.`}/>
+
+<section class="section interior-solutions" id="soluciones"><div class="wrap content-grid"><div><div data-reveal><p class="eyebrow">QUÉ RESOLVEMOS</p><h2>La solución empieza<br/>con tu maniobra.</h2></div><ul class="solution-list" data-stagger>{service.solutions.map((s,i)=><li data-reveal><span>0{i+1}</span>{s}</li>)}</ul></div><aside class="note-panel technical-panel" data-reveal><p class="eyebrow">PLANEACIÓN ANTES DE EJECUCIÓN</p><h3>Cuéntanos qué necesitas mover.</h3>{service.equipment.length?service.equipment.map(e=><p>{e}</p>):<p>Evaluamos el peso, la distancia, la altura y los accesos. Te recomendamos el equipo adecuado para las condiciones de tu proyecto.</p>}<a href={withBase('/equipos/')} class="text-link">Explorar nuestra flota ↗</a><br/><a href={withBase('/contacto/')} class="button dark">Encontrar mi equipo <span aria-hidden="true">↗</span></a></aside></div></section>
+<section class="section about-section"><div class="wrap faq"><div data-reveal><p class="eyebrow">ANTES DE EMPEZAR</p><h2>Resolvemos tus dudas.</h2></div>{service.faq.map(f=><details data-reveal><summary>{f.q}</summary><p>{f.a}</p></details>)}</div></section><CTA/>
+</Base>

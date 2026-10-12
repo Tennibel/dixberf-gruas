@@ -1,0 +1,155 @@
+[
+  {
+    "slug": "renta-gruas-industriales",
+    "title": "Renta de grúas industriales con operador",
+    "label": "Renta de grúas",
+    "description": "Grúas telescópicas de diferentes capacidades, con pluma de hasta 90 m, para izajes en plantas, obras y patios industriales del centro de México y el resto del país.",
+    "image": "telescopica",
+    "solutions": [
+      "Izaje y posicionamiento de maquinaria y equipos.",
+      "Montaje de estructuras metálicas, prefabricados y naves industriales.",
+      "Instalación de tanques, silos, pasarelas y escaleras industriales.",
+      "Izaje de equipos HVAC en azoteas.",
+      "Montaje y desmontaje de grúas torre."
+    ],
+    "equipment": [],
+    "faq": [
+      {
+        "q": "¿Cómo sé qué grúa necesito?",
+        "a": "No depende sólo del peso: también cuentan la distancia a la que se colocará la carga, la altura y los accesos. Con esos datos evaluamos la maniobra y te recomendamos el equipo."
+      },
+      {
+        "q": "¿Atienden urgencias o fuera de horario?",
+        "a": "Sí. Tenemos equipos y personal disponibles las 24 horas, los 365 días del año."
+      }
+    ]
+  },
+  {
+    "slug": "renta-gruas-industriales-toluca",
+    "title": "Renta de grúas industriales en Toluca",
+    "label": "Grúas en Toluca",
+    "description": "Nuestra base está en Toluca, Estado de México. Atendemos plantas, obras y parques industriales de Toluca, Lerma y el Valle de Toluca con grúas telescópicas, grúa HIAB, montacargas y transporte especializado.",
+    "image": "grove35",
+    "solutions": [
+      "Izajes y montajes de maquinaria en planta.",
+      "Reubicación de maquinaria pesada y líneas de producción.",
+      "Carga, traslado y colocación con HIAB.",
+      "Montaje de estructuras y naves industriales."
+    ],
+    "equipment": [],
+    "faq": [
+      {
+        "q": "¿Por qué contratar una empresa de grúas con base en Toluca?",
+        "a": "Porque los equipos salen de aquí: menos traslado, más disponibilidad y atención directa con quien planea la maniobra."
+      },
+      {
+        "q": "¿Trabajan en fines de semana o en paros de planta?",
+        "a": "Sí. Operamos las 24 horas, los 365 días del año."
+      }
+    ]
+  },
+  {
+    "slug": "gruas-telescopicas",
+    "title": "Renta de grúas telescópicas",
+    "label": "Grúas telescópicas",
+    "description": "Para izajes donde la altura y el alcance son clave. Nuestra Grove alcanza hasta 90 m de altura de punta con extensión.",
+    "image": "hero",
+    "solutions": [
+      "Elevación de materiales a gran altura.",
+      "Montaje de estructuras metálicas y prefabricados.",
+      "Construcción de edificios, puentes y presas.",
+      "Colocación de anuncios y pantallas gigantes."
+    ],
+    "equipment": [],
+    "faq": [
+      {
+        "q": "¿Cuál es la diferencia entre una grúa telescópica y una HIAB?",
+        "a": "La telescópica levanta más peso a mayor altura y alcance. La HIAB conviene cuando además hay que transportar la carga, porque carga, lleva y coloca con el mismo camión."
+      },
+      {
+        "q": "¿Qué necesito preparar en el sitio?",
+        "a": "Un área firme y nivelada para apoyar la grúa, acceso libre y el espacio despejado alrededor de la carga. Lo revisamos contigo antes del servicio."
+      }
+    ]
+  },
+  {
+    "slug": "grua-hiab",
+    "title": "Renta de grúa HIAB",
+    "label": "Grúa HIAB",
+    "description": "Camión grúa HIAB 360E-3 con capacidad de 15 toneladas: carga, traslada y coloca tu equipo en un solo servicio. Su perfil bajo permite trabajar en espacios restringidos.",
+    "image": "hiab",
+    "solutions": [
+      "Traslado y colocación de maquinaria.",
+      "Movimiento de contenedores.",
+      "Instalación de tanques, pasarelas y escaleras.",
+      "Maniobras en naves con altura limitada."
+    ],
+    "equipment": [
+      "Camión grúa HIAB 360E-3 (15 t) y camión grúa Simon RO TC4792 con capacidad de 21 t, radio de 24 m y cama de 6.4 × 2.4 m."
+    ],
+    "faq": [
+      {
+        "q": "¿Cuánto peso puede mover?",
+        "a": "Hasta 15 toneladas con la HIAB 360E-3. La capacidad disminuye conforme la carga se aleja del camión, por eso te pedimos la distancia de colocación."
+      },
+      {
+        "q": "¿Puede entrar a mi planta o bodega?",
+        "a": "Su perfil de altura reducido le permite operar en espacios restringidos. Con las medidas del acceso te confirmamos."
+      }
+    ]
+  },
+  {
+    "slug": "maniobras-industriales",
+    "title": "Maniobras industriales",
+    "label": "Maniobras industriales",
+    "description": "Más que un proveedor de maniobras, somos un aliado en la gestión de tu cadena de suministro: planeamos, izamos, movemos y posicionamos maquinaria y estructuras con seguridad.",
+    "image": "maniobra",
+    "solutions": [
+      "Evaluación de riesgos.",
+      "Diseño de planes de izaje.",
+      "Logística de movimientos.",
+      "Carga, descarga, izaje y posicionamiento.",
+      "Reubicación y reacomodo de maquinaria pesada o estructuras.",
+      "Instalación de líneas de producción y componentes de gran formato."
+    ],
+    "equipment": [
+      "Combinamos grúas telescópicas, HIAB, montacargas y transporte según la maniobra."
+    ],
+    "faq": [
+      {
+        "q": "¿Entregan un plan de izaje?",
+        "a": "Sí. Cada maniobra parte de una evaluación de riesgos y un plan de izaje."
+      },
+      {
+        "q": "¿Trabajan con la planta en operación?",
+        "a": "Sí. Coordinamos horarios con tu planta y operamos las 24 horas, los 365 días del año."
+      }
+    ]
+  },
+  {
+    "slug": "transporte-maquinaria-pesada",
+    "title": "Transporte de maquinaria pesada",
+    "label": "Transporte especializado",
+    "description": "Trasladamos maquinaria, contenedores y carga sobredimensionada en toda la República con tractocamiones Freightliner Columbia 120, plataformas, camas bajas y tortons.",
+    "image": "transporte",
+    "solutions": [
+      "Traslado de maquinaria industrial y de construcción.",
+      "Carga sobredimensionada y componentes pesados.",
+      "Movimiento de contenedores y mercancías voluminosas.",
+      "Servicio completo: grúa en origen, transporte y grúa en destino."
+    ],
+    "equipment": [
+      "Tractocamiones Freightliner Columbia 120, diseñados para rutas largas y operaciones exigentes, con plataformas, camas bajas y tortons."
+    ],
+    "faq": [
+      {
+        "q": "¿Hacen traslados fuera del Estado de México?",
+        "a": "Sí. Tenemos cobertura en toda la República Mexicana."
+      },
+      {
+        "q": "¿Pueden cargar y descargar con grúa?",
+        "a": "Sí. Coordinamos la grúa en origen y en destino para que recibas la carga colocada."
+      }
+    ]
+  }
+]
